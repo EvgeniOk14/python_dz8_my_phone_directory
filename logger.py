@@ -60,23 +60,28 @@ def delete_data(delete_string):
         Flag = False
 
         for line_i in range(len(list_data)):
-            if Flag: 
+            if Flag:  
                 break
-
             record_list_data = list_data[line_i].split('; ')
             for element in range(len(record_list_data)):
+                count = 0
                 if delete_string in record_list_data[element]:
                     del record_list_data[element]
 
                     new_line = '; '.join(record_list_data)
                     list_data[line_i] = new_line
                     Flag = True
+                    print('Введённый Вами элемент успешно удалён! Для просмотра результата запустите программу снова! ')
                     break
+                else:
+                    count+= 1
+        if count == len(record_list_data):
+            print('Такого элемента в базе нет. Перезапустите программу и введите элемент! ') 
 
     with open('file_name.txt', 'w', encoding='utf-8') as file:
         for line in list_data:
             file.write(line + '\n')
-    print('Введённый Вами элемент успешно удалён! Для просмотра результата запустите программу снова! ')
+    
 
 
 
@@ -90,18 +95,23 @@ def swap_value(old_value, new_value):
 
             record_list_data = list_data[line_i].split('; ')
             for element in range(len(record_list_data)):
+                count = 0
                 if  old_value in record_list_data[element]:
                     record_list_data[element] = new_value
 
                     new_line = '; '.join(record_list_data)
                     list_data[line_i] = new_line
                     Flag = True
+                    print('Введённый Вами элемент успешно заменён! Для просмотра результата запустите программу снова! ')
                     break
-
+                else:
+                    count +=1
+        if count == len(record_list_data):
+            print('Такого элемента в базе нет. Перезапустите программу и введите элемент! ')
         with open('file_name.txt', 'w', encoding='utf-8') as file:
             for line in list_data:
                 file.write(line + '\n')           
-        print('Введённый Вами элемент успешно заменён! Для просмотра результата запустите программу снова! ')
+        
 
         
 
