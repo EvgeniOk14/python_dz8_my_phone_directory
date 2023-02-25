@@ -56,22 +56,37 @@ def filter_data(filter_string):
 def delete_data(delete_string):
     with open('file_name.txt', 'r', encoding='utf-8') as file:
         list_data = file.readlines()
-        for line in list_data:
-            if delete_string in line:
-                list_data.remove(line)
+
+        Flag = False
+
+        for line_i in range(len(list_data)):
+            if Flag: 
+                break
+
+            record_list_data = list_data[line_i].split('; ')
+            for element in range(len(record_list_data)):
+                if delete_string in record_list_data[element]:
+                    del record_list_data[element]
+
+                    new_line = '; '.join(record_list_data)
+                    list_data[line_i] = new_line
+                    Flag = True
+                    break
+
     with open('file_name.txt', 'w', encoding='utf-8') as file:
         for line in list_data:
-            file.write(line.split('; '))
+            file.write(line + '\n')
     print('Введённый Вами элемент успешно удалён! Для просмотра результата запустите программу снова! ')
-             
+
+
 
 def swap_value(old_value, new_value):
     with open('file_name.txt', 'r', encoding='utf-8') as file:
         list_data = file.readlines()
-        is_swap = False
+        Flag = False
 
         for line_i in range(len(list_data)):
-            if is_swap: break
+            if Flag: break
 
             record_list_data = list_data[line_i].split('; ')
             for element in range(len(record_list_data)):
@@ -80,7 +95,7 @@ def swap_value(old_value, new_value):
 
                     new_line = '; '.join(record_list_data)
                     list_data[line_i] = new_line
-                    is_swap = True
+                    Flag = True
                     break
 
         with open('file_name.txt', 'w', encoding='utf-8') as file:

@@ -1,5 +1,5 @@
 from logger import input_data, print_data, filter_data, delete_data, swap_value
-
+from data_create_file import old_value, new_value
 def swap():
     print(""" Выберите элемент справочника, который хотите заменить:
               1 - порядковый номер абанента,
@@ -15,25 +15,16 @@ def swap():
         operation_number = int(input('Введите номер операции: '))
 
     if operation_number == 1:
-        new_value = input('Введите новое значение: ')
-        old_value = input('Введите старое значение: ')
-        swap_value(old_value, new_value) 
+         swap_value(old_value(), new_value())     
     elif operation_number == 2:
-        new_value = input('Введите новое значение: ')
-        old_value = input('Введите старое значение: ')
-        swap_value(old_value, new_value)
+        swap_value(old_value(), new_value())
     elif operation_number == 3:
-        new_value = input('Введите новое значение: ')
-        old_value = input('Введите старое значение: ')
-        swap_value(old_value, new_value)
+        swap_value(old_value(), new_value())
     elif operation_number == 4:
-        new_value = input('Введите новое значение: ')
-        old_value = input('Введите старое значение: ')
-        swap_value(old_value, new_value)
+        swap_value(old_value(), new_value())
     elif operation_number == 5:
-        new_value = input('Введите новое значение: ')
-        old_value = input('Введите старое значение: ')
-        swap_value(old_value, new_value)
+        swap_value(old_value(), new_value())
+    
 
 
 
@@ -56,6 +47,7 @@ def choose():
         delete_data(delete_string) 
     elif operation_number == 2:
         interface()
+
 
 
 def interface():
